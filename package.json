@@ -1,12 +1,16 @@
 {
   "dependencies": {
-    "express": "^4.18.1"
+    "bootstrap": "^5.2.1",
+    "bootstrap-sass": "^3.4.3",
+    "cors": "^2.8.5",
+    "express": "^4.18.1",
+    "fs-web": "^1.0.1",
+    "validate-date": "^2.0.0"
   },
   "name": "calendar",
   "description": "",
   "version": "1.0.0",
   "main": "app.js",
-  "devDependencies": {},
   "scripts": {
     "start": "node ./bin/www"
   },

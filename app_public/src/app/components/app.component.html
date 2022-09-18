@@ -1,0 +1,86 @@
+<div class="container text-center">
+  <div class="row justify-content-center mt-4 mb-3 border-primary">
+    <div class="col-5">
+      <h1>{{title}}</h1>
+    </div>
+    <div class="col-2 mt-2">
+      <div class="input-group">
+        <input (keyup)="onKey($event)" type="text" id="anyDateInput" class="form-control box-shadow bg-light text-center" placeholder="DD/MM/YYYY" data-bs-trigger="click hover focus" title="Days and months lower than 10 must start with 0. Example: 01/01/2000.">
+      </div>
+    </div>
+  </div>
+  <div class="fs-5" *ngIf="dataLoaded">
+    <div>
+      <div class="row justify-content-center fw-bold">
+        <div class="col-1 ms-1 me-1">Mo</div>
+        <div class="col-1 ms-1 me-1">Tu</div>
+        <div class="col-1 ms-1 me-1">We</div>
+        <div class="col-1 ms-1 me-1">Th</div>
+        <div class="col-1 ms-1 me-1">Fr</div>
+        <div class="col-1 ms-1 me-1">Sa</div>
+        <div class="col-1 ms-1 me-1 text-danger">Su</div>
+      </div>
+    </div>
+    <div class="text-white">
+      <div class="row justify-content-center">
+        <div class="col-1 border border-2 border-primary m-1 pt-4 pb-4" [ngClass]="{'bg-danger': week.holiday == true, 'bg-primary': week.number != '-', 'text-danger fw-bold': week.day == 'Sun' && week.number != '-' && week.holiday == false}" data-bs-toggle="tooltip" data-bs-placement="top" title="{{week.holidayName}}" *ngFor="let week of month[0]; let i=index">
+          {{week.number}}
+        </div>
+      </div>
+      <div class="row justify-content-center">
+        <div class="col-1 border border-2 border-primary m-1 pt-4 pb-4" [ngClass]="{'bg-danger': week.holiday == true, 'bg-primary': week.number != '-', 'text-danger fw-bold': week.day == 'Sun' && week.number != '-' && week.holiday == false}" data-bs-toggle="tooltip" data-bs-placement="top" title="{{week.holidayName}}" *ngFor="let week of month[1]; let i=index">
+          {{week.number}}
+        </div>
+      </div>
+      <div class="row justify-content-center">
+        <div class="col-1 border border-2 border-primary m-1 pt-4 pb-4" [ngClass]="{'bg-danger': week.holiday == true, 'bg-primary': week.number != '-', 'text-danger fw-bold': week.day == 'Sun' && week.number != '-' && week.holiday == false}" data-bs-toggle="tooltip" data-bs-placement="top" title="{{week.holidayName}}" *ngFor="let week of month[2]; let i=index">
+          {{week.number}}
+        </div>
+      </div>
+      <div class="row justify-content-center">
+        <div class="col-1 border border-2 border-primary m-1 pt-4 pb-4" [ngClass]="{'bg-danger': week.holiday == true, 'bg-primary': week.number != '-', 'text-danger fw-bold': week.day == 'Sun' && week.number != '-' && week.holiday == false}" data-bs-toggle="tooltip" data-bs-placement="top" title="{{week.holidayName}}" *ngFor="let week of month[3]; let i=index">
+          {{week.number}}
+        </div>
+      </div>
+      <div class="row justify-content-center">
+        <div class="col-1 border border-2 border-primary m-1 pt-4 pb-4" [ngClass]="{'bg-danger': week.holiday == true, 'bg-primary': week.number != '-', 'text-danger fw-bold': week.day == 'Sun' && week.number != '-' && week.holiday == false}" data-bs-toggle="tooltip" data-bs-placement="top" title="{{week.holidayName}}" *ngFor="let week of month[4]; let i=index">
+          {{week.number}}
+        </div>
+      </div>
+      <div class="row justify-content-center">
+        <div class="col-1 border border-2 border-primary m-1 pt-4 pb-4" [ngClass]="{'bg-danger': week.holiday == true, 'bg-primary': week.number != '-', 'text-danger fw-bold': week.day == 'Sun' && week.number != '-' && week.holiday == false}" data-bs-toggle="tooltip" data-bs-placement="top" title="{{week.holidayName}}" *ngFor="let week of month[5]; let i=index">
+          {{week.number}}
+        </div>
+      </div>
+    </div>
+  </div>
+  <form (ngSubmit)="goToSelectedDate()" enctype="multipart/form-data" class="mt-4">
+    <div class="row justify-content-center">
+      <div class="col-2">
+        <select class="form-select box-shadow bg-light text-center" name="month" [(ngModel)]="calendarForm.month" required>
+          <option selected disabled label="Month"></option>
+          <option value="01">January</option>
+          <option value="02">February</option>
+          <option value="03">March</option>
+          <option value="04">April</option>
+          <option value="05">May</option>
+          <option value="06">June</option>
+          <option value="07">July</option>
+          <option value="08">August</option>
+          <option value="09">September</option>
+          <option value="10">October</option>
+          <option value="11">November</option>
+          <option value="12">December</option>
+        </select>
+      </div>
+      <div class="col-2">
+        <div class="input-group">
+          <input type="number" id="year" min="1800" max="2200" class="form-control box-shadow bg-light text-center" placeholder="Year" name="year" [(ngModel)]="calendarForm.year" required>
+        </div>
+      </div>
+      <div class="d-grid col-1">
+        <button class="btn btn-primary fs-6 box-shadow" type="submit">Go</button>
+      </div>
+    </div>
+  </form>
+</div>
