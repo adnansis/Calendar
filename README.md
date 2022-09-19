@@ -12,6 +12,11 @@ Sundays are market with red text. Holidays are market with red rectangle. Hoveri
 
 ## How to run
 
+### Prerequirements:
+
+- Installed Node.js on your system. Download links can be found here: [https://nodejs.org/en/download/](https://nodejs.org/en/download/)
+- OS: Microsoft Windows 10 or 11
+
 - Clone the repository
 - Run the Calendar.ps1 script located in the root folder
 - Wait for script to complete. You should get a message **√ Compiled successfully.**
