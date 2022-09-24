@@ -8,7 +8,7 @@ This is a simple Web App that displays a Calendar for any year between 1800 and 
 - Jump to any date by selecting a month in dropdown select box and typing in a year in the number input box next to it, both located under the Calendar. Then click the **Go** button.
 - Write down holidays that you want to see on the Calendar in a text file **holidays.txt** located in the root folder of the app. A few examples are already in the file. Format is **DD/MM/YYYY;holiday name;repeating** where repeating must have value of **t** for repeating or **f** for not repeating holiday. Every holiday must be written in a separate line.
 
-Sundays are market with red text. Holidays are marked with red rectangle. Hovering over a holiday shows the holiday name.
+Sundays are marked with red text. Holidays are marked with red rectangle. Hovering over a holiday shows the holiday name.
 
 ## How to run
 
