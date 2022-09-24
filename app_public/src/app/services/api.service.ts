@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
-import { catchError, Observable, retry, throwError } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -9,6 +9,9 @@ export class ApiService {
 
   constructor(private http: HttpClient) { }
 
+  /*
+    Calls the Calendar API and returns the Calendar JSON object.
+  */
   public getCalendarData(query: string): Observable<any> {
 
     const url: string = "http://localhost:3000/calendar/" + query;

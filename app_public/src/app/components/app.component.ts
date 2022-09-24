@@ -16,8 +16,7 @@ var queryParam = currentYear.toString() + currentMonthNumber.toString();
 
 @Component({
   selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  templateUrl: './app.component.html'
 })
 export class AppComponent implements OnInit {
 
@@ -37,6 +36,9 @@ export class AppComponent implements OnInit {
   
   weekDays = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
 
+  /*
+
+  */
   private fillInData(): void {
     
     // fill the first week up to first day included
@@ -74,7 +76,7 @@ export class AppComponent implements OnInit {
     // reset week
     this.week = [];
 
-    // fill the rest of weeks
+    // fill the rest of weeks in the month
     for (var weekIx = 1; weekIx < 6; weekIx++) {
       for (var dayIx = 0; dayIx < 7; dayIx++) {
         if (this.calendar.length < this.day) {
@@ -96,16 +98,23 @@ export class AppComponent implements OnInit {
     }
   }
 
+  /*
+    Returns the holiday name, if parameter day is found in holiday array. Otherwise returns empty string.
+  */
   isHoliday(day: number): string {
     for (var i = 0; i < this.calendar.holidays.length; i++) {
-      if (day == parseInt(this.calendar.holidays[i].substring(0, 2))) 
+      if (day == parseInt(this.calendar.holidays[i].substring(0, 2))) {
         return this.calendar.holidays[i].substring(3, this.calendar.holidays[i].length);
+      }
     }
     return '';
   }
 
   dateInput = '';
-
+  /*
+    Prepares calendar data and refreshes the component if data format in input field is correct.
+    Gets called on every keypress if input field is focused.
+  */
   onKey(event: any) {
 
     this.dateInput = event.target.value;
@@ -133,6 +142,9 @@ export class AppComponent implements OnInit {
     }
   }
 
+  /*
+    Prepares calendar data based on calendar form data.
+  */
   goToSelectedDate() {
 
     if (parseInt(this.calendarForm.year) > 2200 || parseInt(this.calendarForm.year) < 1800) {
@@ -162,9 +174,11 @@ export class AppComponent implements OnInit {
 
     // delete input from input field
     const resetInputField = document.getElementById("anyDateInput") as HTMLInputElement | null;
-    if (resetInputField != null) resetInputField.value = '';
+    if (resetInputField != null) {
+      resetInputField.value = '';
+    }
 
-    // call the main function to load calendar data
+    // call the main service function to load calendar data
     this.apiService.getCalendarData(queryParam).subscribe((list) => {
       this.calendar = list;
       this.fillInData();
